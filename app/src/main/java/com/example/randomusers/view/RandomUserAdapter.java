@@ -1,5 +1,6 @@
 package com.example.randomusers.view;
 
+import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -47,10 +48,11 @@ public class RandomUserAdapter extends RecyclerView.Adapter<RandomUserAdapter.Ra
                 .applyDefaultRequestOptions(RequestOptions.centerCropTransform())
                 .load(randomUser.getPicture().getLarge().toString())
                 .into(holder.binding.randomUserImageview);
-            holder.binding.userDetailsTextview.setText(randomUser.getEmail().toString()+"\n"+randomUser.getCell().toString()
+            holder.binding.userDetailsTextview.setText(randomUser.getEmail().toString() + "\n" + randomUser.getCell().toString()
                     + "\n"+randomUser.getLocation().getStreet().getNumber() + " " + randomUser.getLocation().getStreet().getName()
                     + " " + randomUser.getLocation().getCity() + ", " + randomUser.getLocation().getState()
                     + " " + randomUser.getLocation().getPostcode());
+
             holder.binding.userDetailsButton.setOnTouchListener(new View.OnTouchListener(){
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
@@ -63,13 +65,18 @@ public class RandomUserAdapter extends RecyclerView.Adapter<RandomUserAdapter.Ra
                     return false;
                 }
             });
-        holder.binding.userDetailsButton.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus)
-                    holder.binding.userDetailsTextview.setVisibility(View.GONE);
-            }
-        });
+/*            holder.binding.userDetailsButton.setOnDragListener(new View.OnDragListener() {
+                @Override
+                public boolean onDrag(View v, DragEvent event) {
+                    if (event.getAction() == DragEvent.ACTION_DRAG_ENTERED){
+                        holder.binding.userDetailsTextview.setVisibility(View.VISIBLE); //Visible
+                    }
+                    else if (event.getAction() == DragEvent.ACTION_DRAG_ENDED){
+                        holder.binding.userDetailsTextview.setVisibility(View.GONE); //Gone
+                    }
+                    return false;
+                }
+            });*/
     }
 
     @Override
