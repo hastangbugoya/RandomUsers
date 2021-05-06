@@ -3,6 +3,7 @@ package com.example.randomusers.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.randomusers.R;
 import com.example.randomusers.databinding.ActivityMainBinding;
@@ -24,7 +25,15 @@ public class MainActivity extends AppCompatActivity implements Contract.View{
         setContentView(binding.getRoot());
         binding.usersRecyclerview.setAdapter(adapter);
         Utility.LogThis("MainActivity1");
-        presenter.getRandomUsers(30);
+        //presenter.getRandomUsers(30);
+        binding.searchButton.setOnClickListener(view ->{
+            String s = binding.searchCountEdittext.getText().toString();
+            if(s.length() > 0 && Integer.parseInt(s) > 0){
+                int count = Integer.parseInt(s);
+                presenter.getRandomUsers(count);
+            }
+        });
+
     }
     @Override
     public void displayRandomUsers(List<User> randomUsers) {
@@ -33,5 +42,15 @@ public class MainActivity extends AppCompatActivity implements Contract.View{
     @Override
     public void setStatus(RandomUserPresenter.Status status) {
 
+    }
+    private void Toaster(RandomUserPresenter.Status status){
+        switch (status) {
+            case ERROR:
+                break;
+            case COMPLETE:
+                break;
+            case LOADING:
+                break;
+        }
     }
 }
