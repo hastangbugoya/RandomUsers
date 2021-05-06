@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements Contract.View{
                 binding.searchCountEdittext.setText("");
             }
             else
-                Toast.makeText(this,"Invalid user court!",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"Invalid user count!",Toast.LENGTH_LONG).show();
         });
 
     }

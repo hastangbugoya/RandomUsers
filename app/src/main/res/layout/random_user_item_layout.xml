@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#034205">
+        android:background="#254401">
 
         <ImageView
             android:id="@+id/random_user_imageview"
