@@ -3,6 +3,7 @@ package com.example.randomusers.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.randomusers.R;
@@ -31,7 +32,10 @@ public class MainActivity extends AppCompatActivity implements Contract.View{
             if(s.length() > 0 && Integer.parseInt(s) > 0){
                 int count = Integer.parseInt(s);
                 presenter.getRandomUsers(count);
+                binding.searchCountEdittext.setText("");
             }
+            else
+                Toast.makeText(this,"Invalid user court!",Toast.LENGTH_LONG).show();
         });
 
     }
@@ -41,16 +45,29 @@ public class MainActivity extends AppCompatActivity implements Contract.View{
     }
     @Override
     public void setStatus(RandomUserPresenter.Status status) {
+        switch (status) {
+            case LOADING:{
+                Log.d("Meow","LOADING");
+                Toast.makeText(this,"Loading users....",Toast.LENGTH_SHORT).show();
+                break;
+            }
+            case COMPLETE:{
+                Log.d("Meow","COMPLETE");
+                Toast.makeText(this,"Loading complete!",Toast.LENGTH_SHORT).show();
+                break;
+            }
+            case ERROR:{
+                Log.d("Meow","ERROR");
+                Toast.makeText(this,"Error loading users",Toast.LENGTH_SHORT).show();
+                break;
+            }
 
+
+            default:
+                throw new IllegalStateException("Unexpected value: " + status);
+        }
     }
     private void Toaster(RandomUserPresenter.Status status){
-        switch (status) {
-            case ERROR:
-                break;
-            case COMPLETE:
-                break;
-            case LOADING:
-                break;
-        }
+
     }
 }

@@ -2,27 +2,34 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/black"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
     <EditText
+        style="@style/count_edittext_fontstyle"
+        android:textSize="24sp"
+        android:textColorHint="#393939"
         android:id="@+id/search_count_edittext"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
+        android:layout_height="0dp"
+        android:paddingStart="16dp"
         android:inputType="number"
         android:hint="count"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/search_button"/>
+        app:layout_constraintEnd_toStartOf="@+id/search_button"
+        app:layout_constraintBottom_toBottomOf="@id/search_button"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/search_button"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_margin="4dp"
+        android:padding="8dp"
         android:text=">>"
+        android:background="#064B09"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/search_count_edittext"
@@ -32,12 +39,12 @@
         android:id="@+id/users_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="8dp"
-        tools:listitem="@layout/random_user_item_layout"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/search_count_edittext"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_count_edittext"
+        app:layout_constraintVertical_bias="1.0"
+        tools:listitem="@layout/random_user_item_layout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

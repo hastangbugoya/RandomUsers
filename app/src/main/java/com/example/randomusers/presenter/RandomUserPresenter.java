@@ -34,14 +34,11 @@ public class RandomUserPresenter implements Contract.Presenter {
                 Utility.LogThis("getRandomUsers->onResponse");
                 if (response.body() != null && response.body().getResults() != null) {
                     userList = response.body().getResults();
-//                    for(int i = 0; i < userList.size(); i++)
-//                        Utility.LogThis(userList.get(i).toString());
-                    Utility.LogThis("getRandomUsers->onResponse->notnull: "+userList.size()+"");
+                    Utility.LogThis("getRandomUsers->onResponse->notnull: " + userList.size()+" users");
                     view.displayRandomUsers(userList);
                     view.setStatus(COMPLETE);
                 } else
                     view.setStatus(ERROR);
-
             }
 
             @Override
