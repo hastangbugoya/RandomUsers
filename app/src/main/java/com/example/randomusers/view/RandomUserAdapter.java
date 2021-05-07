@@ -1,5 +1,6 @@
 package com.example.randomusers.view;
 
+import android.util.Log;
 import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -60,6 +61,7 @@ public class RandomUserAdapter extends RecyclerView.Adapter<RandomUserAdapter.Ra
                         holder.binding.userDetailsTextview.setVisibility(View.VISIBLE); //Visible
                         return true;
                     } else if (event.getAction() == MotionEvent.ACTION_UP){
+                        Log.d("Meow","MotionEvent.ACTION_UP");
                         holder.binding.userDetailsTextview.setVisibility(View.GONE); //Gone
                     }
                     return false;
@@ -68,13 +70,19 @@ public class RandomUserAdapter extends RecyclerView.Adapter<RandomUserAdapter.Ra
 /*            holder.binding.userDetailsButton.setOnDragListener(new View.OnDragListener() {
                 @Override
                 public boolean onDrag(View v, DragEvent event) {
-                    if (event.getAction() == DragEvent.ACTION_DRAG_ENTERED){
-                        holder.binding.userDetailsTextview.setVisibility(View.VISIBLE); //Visible
-                    }
-                    else if (event.getAction() == DragEvent.ACTION_DRAG_ENDED){
+                    if (event.getAction() == DragEvent.ACTION_DRAG_EXITED){
+                        Log.d("Meow","DragEvent.ACTION_DRAG_EXITED");
                         holder.binding.userDetailsTextview.setVisibility(View.GONE); //Gone
                     }
                     return false;
+                }
+            });
+
+            holder.binding.userDetailsButton.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if(!hasFocus)
+                        holder.binding.userDetailsTextview.setVisibility(View.GONE); //Gone
                 }
             });*/
     }
